@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // arr1=['name','zhangsan']
+        // 'name=zhangsan&age=18&sex=nan'
+        // arr= ['name=zhangsan',age=18,sex=nan]
+       // slice:参数1：从何处开始选取（截取数组单元起始位置的索引下标）
+             // 参数2：从何处结束选取（截取数组单元结束位置的索引下标）
+        let str = 'http://www.baidu.com/?name=zhangsan&age=18&sex=nan#'
+        const fn = (data) => {
+            let newStr = data.slice(data.indexOf('?') + 1, -1)
+            //pre: 必需。初始值, 或者计算结束后的返回值。
+             //cur： 必需。当前元素。
+            return newStr.split('&').reduce((pre, cur) => {
+                // obj[k]=..
+                pre[cur.split('=')[0]] = cur.split('=')[1]
+                return pre
+            }, {})
+        }
+        console.log(fn(str))
+
+
+
+
+    </script>
+
+</body>
+
+</html>
